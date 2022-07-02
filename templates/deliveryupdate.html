@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Delivery Update</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body style = background-color: linear-gradient(to right top, #0a6113, #116a19, #17731f, #1d7c26, #23852c, #2d882e, #378c30, #3f8f32, #4a8d31, #548a30, #5b8730, #628531);>
+    <div class="container">
+      <br>
+      <div class="login-box" style="position:absolute;left:490px;top:100px;">
+        <div class="login-logo">
+            <b>
+                <div class="center" style="font-size:32px ;color:  #2e86c1 ;font-family:courier,arial,helvetica">Register Here </div></b>
+        </div>
+        <form action="/orderupdate" method="post">
+          <div class="form-group has-feedback">
+            <input type="text" placeholder="order id" name="orderid" value="{{
+            request.form.orderid }}">
+          </div>
+          <div class="form-group has-feedback">
+            <input type="text" placeholder="status of order" name="statusoforder" value="{{
+            request.form.statusoforders}}">
+          </div>
+          <div class="form-group has-feedback">
+            <input type="text" placeholder="delivery user name" name="deliveryusername" value="{{
+            request.form.deliveryusername }}">
+          </div>
+          <div class="form-group has-feedback">
+            <input type="text" placeholder="location of agent" name="locationofagent" value="{{
+            request.form.locationofagent }}">
+          </div>
+          <div class="form-group has-feedback">
+            <input type="text" placeholder="delivery user phoneno" name="deliveryuserphoneno" value="{{
+            request.form.deliveryuserphoneno}}">
+          </div>
+          <div class="form-group has-feedback">
+            <input class="btn btn-default" type="submit" value="Update">
+          </div>
+        </form>
+      </div>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+  </body>
+</html>

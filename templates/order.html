@@ -1,0 +1,87 @@
+<html>
+
+<head>
+  <title>MediReg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+
+<body style="background-image:url(/static/orderwall.jpg);">
+  <h1><b>MediReg</b></h1>
+  <div class="container">
+    <br>
+    <table style=" background-repeat:no-repeat; width:100%;margin:0; text-align: center;" cellpadding="0"
+      cellspacing="0" border=black>
+      <th class="name-row">Item name</th>
+      <th class="name-row">Distributer</th>
+      <th class="name-row">Delivery Address</th>
+      <th class="name-row">Status of order</th>
+      <th class="name-row">Amount</th>
+
+      <tbody style="font-weight: normal;font-family:Arial;color:#273746">
+        {% for item in orderitems %}
+        <tr>
+          <td class="name-row">{{item.itemname}}</td>
+          <td class="name-row">{{item.distributer}}</td>
+          <td class="name-row">{{item.deliveryaddress}}</td>
+          <td class="name-row">{{item.statusoforder}}</td>
+          <td class="name-row">{{item.cost}}</td>
+          </tbody>
+      </tr>
+      {% endfor %}
+    </table>
+    <div class="login-box" style="position:absolute;left:490px;top:100px; margin-top:100px">
+      <div class="login-logo">
+        <b>
+          <div class="center" style="font-size:32px ;color:black; font-family:courier,arial,helvetica;">Order Details
+          </div>
+        </b>
+      </div>
+      <form action="/orderitem" method="post">
+        <div class="form-group has-feedback">
+          <label><b>Item Name</b></label>
+          <br>
+          <input type="text" placeholder="Item name" name="itemname" value="{{
+            request.form.itemname }}">
+        </div>
+        <div class="form-group has-feedback">
+          <label><b>Distributer</b></label>
+          <br>
+          <input type="text" placeholder="Distributer" name="distributer" value="{{
+            request.form.distributer }}">
+        </div>
+        <div class="form-group has-feedback">
+          <label><b>New Address</b></label>
+          <br>
+          <input type="text" placeholder="New Address" name="newaddress" value="{{
+            request.form.newaddress }}">
+        </div>
+        <div class="form-group has-feedback">
+          <label><b>Other Address</b></label>
+          <br>
+          <select class="form-control select2" name="deliveryaddress" value="{{
+            request.form.deliveryaddress }}">
+            <option value="" disabled selected>select from existing address</option>
+            {% for o in user.deliveryaddress %}
+            <option value="{{ o}}">{{o }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group has-feedback">
+          <label><b>Cost</b></label>
+          <br>
+          <input type="text" placeholder="Price" name="cost" value="{{request.form.cost }}">
+        </div>
+        <div class="form-group has-feedback">
+          <br>
+          <input class="btn btn-default" type="submit" value="Order">
+        </div>
+      </form>
+    </div>
+    {% if error %}
+    <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+  </div>
+</body>
+
+</html>

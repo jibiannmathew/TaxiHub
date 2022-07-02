@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>MediReg</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body style = "background-image: linear-gradient(to right top, #0a6113, #116a19, #17731f, #1d7c26, #23852c, #2d882e, #378c30, #3f8f32, #4a8d31, #548a30, #5b8730, #628531);">
+   <h1><b>MediReg</b></h1>
+  <div class="container">
+      <br>
+      <div class="login-box" style="position:absolute;left:490px;top:100px;">
+        <div class="login-logo">
+            <b>
+                <div class="center" style="font-size:32px ;color:  #000000 ;font-family:courier,arial,helvetica">Sign Up </div></b>
+        </div>
+        <form action="/register" method="post">
+          <div class="form-group has-feedback">
+            <label><b>Username</b></label>
+            <br>
+            <input type="text" placeholder="Username" name="username" value="{{
+            request.form.username }}">
+          </div>
+          <div class="form-group has-feedback">
+            <label><b>Password</b></label>
+            <br>
+            <input type="password" placeholder="Password" name="userpassword" value="{{
+            request.form.userpassword }}">
+          </div>
+          <div class="form-group has-feedback">
+            <label><b>Mail</b></label>
+            <br>
+            <input type="text" placeholder="Mail id" name="usermailid" value="{{
+            request.form.usermailid }}">
+          </div>
+
+          <div class="form-group has-feedback">
+            <label><b>Address</b></label>
+            <br>
+            <input type="text" placeholder="DeliveryAddress" name="deliveryaddress" value="{{
+            request.form.deliveryaddress }}">
+          </div>
+          <div class="form-group has-feedback">
+            <label><b>Phone</b></label>
+            <br>
+            <input type="text" placeholder="Phone" name="userphoneno" value="{{
+            request.form.userphoneno }}">
+          </div>
+          <div class="form-group has-feedback">
+            <br>
+            <input class="btn btn-default" type="submit" value="Register">
+          </div>
+        </form>
+      </div>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+  </body>
+</html>
